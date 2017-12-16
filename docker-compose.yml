@@ -1,0 +1,17 @@
+version: "2"
+services:
+  express:
+    env_file:
+        - .env
+    container_name: usermanger_app
+    build: .
+    ports:
+      - "8080:8080"
+    links:
+      - database
+    
+  database:
+    container_name: api_mongo
+    image: mongo:latest
+    ports:
+      - "27017:27017"
